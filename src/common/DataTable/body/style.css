@@ -1,0 +1,23 @@
+.body {
+  width: 100%;
+
+  tr {
+    background-color: rgba(var(--sidebar-bg));
+
+    &:hover {
+      background-color: rgba(var(--sidebar-tab-active-bg));
+    }
+
+    td,
+    td > a {
+      font-size: var(--data-table-cell-font-size);
+      color: rgba(var(--text-primary));
+      vertical-align: top;
+    }
+
+    td > a {
+      text-decoration: underline;
+      color: rgba(var(--text-primary));
+    }
+  }
+}

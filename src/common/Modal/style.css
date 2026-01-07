@@ -1,0 +1,84 @@
+.overlay {
+  width: 100vw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  background-color: rgba(var(--black), 0.65);
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 75rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0rem 5rem;
+  }
+  @media (max-width: 428px) {
+    padding: 0rem 3.5rem;
+  }
+
+  .modalBox {
+    align-self: flex-end;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background-color: rgba(var(--sidebar-tab-active-bg));
+    border-radius: 100rem;
+    border: 0.15rem solid rgb(var(--border-regular));
+    cursor: pointer;
+  }
+
+  .close {
+    width: 40%;
+    height: 40%;
+    filter: var(--icon-filter);
+  }
+  .content {
+    background-color: rgba(var(--sidebar-tab-active-bg));
+    padding: 2rem;
+    border-radius: 2.5rem;
+    max-height: 70vh;
+    overflow: auto;
+
+    .heading {
+      margin-bottom: 2.5rem;
+      text-transform: capitalize;
+      font-family: "gilroy-semibold";
+      color: rgb(var(--text-primary));
+    }
+  }
+
+  /* Custom Scroll Bar */
+  ::-webkit-scrollbar {
+    width: 1rem;
+    height: 100%;
+    border-radius: 1.5rem;
+    background-color: rgba(var(--black), 0.25);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--black), 0.75);
+    border-radius: 1.5rem;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 1.5rem;
+  }
+}
+
+body.hideBackgroundScroll {
+  overflow: hidden;
+}

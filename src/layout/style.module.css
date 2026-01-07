@@ -1,0 +1,90 @@
+.layoutContainer {
+  display: flex;
+}
+
+.topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  background: rgb(var(--primary));
+  z-index: 99996;
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.12);
+}
+
+.topBarLogoBox {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.topBarLogo {
+  height: 100%;
+  width: auto;
+}
+
+.menuButton {
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 1rem;
+  border: none;
+  background: rgba(var(--white), 0.1);
+  color: rgb(var(--text-primary));
+  font-size: 2.4rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.18);
+  z-index: 99998;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.menuButton:active {
+  transform: scale(0.96);
+}
+
+.backdropHidden {
+  display: none;
+}
+
+.backdropVisible {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 99997;
+}
+
+.content {
+  width: calc(100% - var(--sidebar-width));
+  margin-left: auto;
+  padding: 3.2rem;
+  background-color: rgb(var(--primary));
+  min-height: 100dvh;
+}
+
+@media (max-width: 1023px) {
+  .topBar {
+    display: flex;
+  }
+
+  .menuButton {
+    display: flex;
+    position: static;
+  }
+
+  .content {
+    width: 100%;
+    padding: 1.6rem;
+  }
+}
+
+.contentMobile {
+  padding-top: 7rem;
+}

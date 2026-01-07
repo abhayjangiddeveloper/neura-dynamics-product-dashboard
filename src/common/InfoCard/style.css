@@ -1,0 +1,45 @@
+/* detailCard */
+.detailCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: rgb(var(--sidebar-bg));
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  color: rgb(var(--text-primary));
+}
+
+@media (max-width: 450px) {
+  .detailCard {
+    width: 100%;
+  }
+}
+
+.detailCardTitle {
+  color: inherit;
+  font-weight: 500;
+  text-transform: capitalize;
+  white-space: nowrap;
+  font-size: 1.5rem;
+  font-family: "gilroy-medium";
+}
+
+.detailCardValue {
+  opacity: 0.5;
+  color: inherit;
+  font-size: 1.5rem;
+  font-family: "gilroy-medium";
+}
+
+.boolean {
+  font-size: 1.5rem;
+  opacity: 1;
+  color: inherit;
+}
+
+.link {
+  font-size: 1.5rem;
+  text-decoration: underline !important;
+  transform: scale(1) !important;
+  color: inherit !important;
+}

@@ -1,0 +1,167 @@
+.commonButtonContainer {
+  --loader-foreground-color: 255, 255, 255;
+  --loader-background-color: 32, 32, 32;
+  background-color: none;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+}
+
+.commonButtonContainer .commonButton {
+  background: none;
+  outline: none;
+  border: none;
+  font: 500 2.25rem/3rem "Poppins";
+  background: none;
+  border: none;
+  color: rgb(var(--white));
+  text-transform: capitalize;
+  text-align: center;
+  white-space: nowrap;
+  padding: 1.25rem 3rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.commonButtonContainer .buttonLoadingContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.commonButtonContainer .hideElement {
+  opacity: 0;
+}
+
+/* Primary------------------------ */
+.primaryButton {
+  --loader-foreground-color: var(--white);
+  --loader-background-color: var(--white), 0.5;
+  background-color: rgb(var(--primary-button-bg));
+}
+
+.primaryButton:hover {
+  background-color: rgb(var(--primary-button-bg-hover));
+}
+
+.primaryButton .commonButton {
+  color: rgb(var(--white));
+}
+
+.primaryButton .commonButton:disabled {
+  cursor: not-allowed;
+  transform: scale(1);
+  color: rgb(var(--white), 0.5);
+}
+
+/* Secondary------------------------ */
+.secondaryButton {
+  --loader-foreground-color: var(--primary-button-bg);
+  --loader-background-color: var(--primary-button-bg), 0.5;
+  background-color: rgb(var(--primary-button-bg), 0.05);
+}
+
+.secondaryButton:hover {
+  background-color: rgb(var(--primary-button-bg), 0.1);
+}
+
+.secondaryButton .commonButton {
+  color: rgb(var(--primary-button-bg));
+}
+
+.secondaryButton .commonButton:disabled {
+  cursor: not-allowed;
+  transform: scale(1);
+  color: rgb(var(--primary-button-bg), 0.5);
+}
+
+/* Tertiary------------------------ */
+.tertiaryButton {
+  --loader-foreground-color: var(--primary-button-bg);
+  --loader-background-color: var(--primary-button-bg), 0.5;
+  background-color: transparent;
+}
+
+.tertiaryButton:hover {
+  background-color: rgb(var(--primary-button-bg), 0.05);
+}
+
+.tertiaryButton .commonButton {
+  color: rgb(var(--primary-button-bg));
+}
+
+.tertiaryButton .commonButton:disabled {
+  cursor: not-allowed;
+  transform: scale(1);
+  color: rgb(var(--primary-button-bg), 0.5);
+}
+
+/* Delete------------------------ */
+.deleteButton {
+  --loader-foreground-color: var(--error);
+  --loader-background-color: var(--error), 0.5;
+  background-color: rgb(var(--error), 0.1);
+}
+
+.deleteButton:hover {
+  background-color: rgb(var(--error), 0.15);
+}
+
+.deleteButton .commonButton {
+  color: rgb(var(--error));
+}
+
+.deleteButton .commonButton:disabled {
+  cursor: not-allowed;
+  transform: scale(1);
+  color: rgb(var(--error), 0.5);
+}
+
+/* Normal size------------------------ */
+.normalButton .commonButton {
+  font: 500 2.25rem/3rem "Poppins";
+  padding: 1.25rem 5rem;
+}
+
+/* Medium size------------------------ */
+.mediumButton .commonButton {
+  font: 500 1.8rem/2.4rem "Poppins";
+  padding: 1rem 3.5rem;
+}
+
+/* Small size------------------------ */
+.smallButton .commonButton {
+  font: 500 1.4rem/2rem "Poppins";
+  padding: 0.75rem 3.5rem;
+}
+
+[data-variant="primary"][aria-disabled="true"] {
+  transform: scale(1);
+  pointer-events: none;
+  background-color: rgba(var(--primary-button-bg), 0.5);
+  cursor: not-allowed;
+}
+
+[data-variant="secondary"][aria-disabled="true"] {
+  transform: scale(1);
+  pointer-events: none;
+  background-color: rgba(var(--primary-button-bg), 0.05);
+  cursor: not-allowed;
+}
+
+[data-variant="tertiary"][aria-disabled="true"] {
+  transform: scale(1);
+  pointer-events: none;
+  background-color: rgba(var(--primary-button-bg), 0);
+  cursor: not-allowed;
+}

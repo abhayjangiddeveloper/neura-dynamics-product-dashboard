@@ -1,0 +1,28 @@
+.createProduct {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+
+  .textareaAndInput {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .inputGroup {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+
+      @media (max-width: 650px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .buttonGroup {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+  }
+}

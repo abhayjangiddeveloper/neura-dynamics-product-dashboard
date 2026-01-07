@@ -1,0 +1,31 @@
+.head {
+  width: 100%;
+  outline: none;
+  border: none;
+
+  .additionalHeadCellsRow {
+    background-color: rgba(var(--sidebar-bg));
+  }
+
+  tr {
+    background-color: rgba(var(--sidebar-tab-active-bg));
+
+    th {
+      vertical-align: top;
+
+      .columnLabelAndSortingIcon {
+        display: flex;
+        gap: 1rem;
+
+        .columnLabel {
+          font-size: var(--data-table-cell-font-size);
+          font-weight: 500;
+          text-transform: capitalize;
+          text-wrap: nowrap;
+          color: rgb(var(--text-primary), 0.75);
+          font-family: "gilroy-semibold";
+        }
+      }
+    }
+  }
+}

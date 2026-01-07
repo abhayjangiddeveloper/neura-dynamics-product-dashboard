@@ -1,0 +1,55 @@
+:root {
+  --primary: 0, 0, 0;
+  --secondary: 188, 194, 195;
+  --white: 255, 255, 255;
+  --text-primary: 238, 244, 245;
+  --sidebar-bg: 19, 20, 21;
+  --sidebar-account-card-bg: 35, 35, 36;
+  --sidebar-tab-active-bg: 30, 32, 39;
+  --sidebar-tab-active-tag-bg: 0, 51, 255;
+  --border-regular: 131, 135, 141;
+  --input-bg: 16, 17, 17;
+  --primary-button-bg: 0, 50, 251;
+  --primary-button-bg-hover: 0, 44, 221;
+  --error: 220, 54, 46;
+  --loader-foreground-color: 255, 255, 255;
+  --loader-background-color: 32, 32, 32;
+
+  --icon-filter: brightness(0) saturate(100%) invert(100%) sepia(0%)
+    saturate(0%) hue-rotate(232deg) brightness(104%) contrast(101%);
+  --error-filter: brightness(0) saturate(100%) invert(25%) sepia(69%)
+    saturate(2744%) hue-rotate(346deg) brightness(92%) contrast(87%);
+  --white-filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
+    saturate(1%) hue-rotate(238deg) brightness(102%) contrast(101%);
+
+  --skeleton-base: #2b2b2b;
+  --skeleton-highlight: #3a3a3a;
+}
+
+/* :root {
+  --primary: 255, 255, 255;
+  --secondary: 120, 124, 130;
+  --white: 255, 255, 255;
+  --text-primary: 18, 18, 18;
+  --sidebar-bg: 248, 249, 250;
+  --sidebar-account-card-bg: 255, 255, 255;
+  --sidebar-tab-active-bg: 240, 242, 245;
+  --sidebar-tab-active-tag-bg: 0, 51, 255;
+  --border-regular: 228, 230, 233;
+  --input-bg: 255, 255, 255;
+  --primary-button-bg: 0, 50, 251;
+  --error: 220, 54, 46;
+  --loader-foreground-color: 255, 255, 255;
+  --loader-background-color: 32, 32, 32;
+
+  --icon-filter: brightness(0) saturate(100%);
+  --error-filter: brightness(0) saturate(100%) invert(25%) sepia(69%)
+    saturate(2744%) hue-rotate(346deg) brightness(92%) contrast(87%);
+  --white-filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
+    saturate(1%) hue-rotate(238deg) brightness(102%) contrast(101%);
+
+
+
+    --skeleton-base: #e3e3e3;
+  --skeleton-highlight: #f7f7f7;
+} */

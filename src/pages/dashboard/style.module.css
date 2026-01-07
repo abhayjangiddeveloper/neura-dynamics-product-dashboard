@@ -1,0 +1,23 @@
+.dashboard {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5rem;
+  overflow: auto;
+
+  .heading {
+    font-family: "gilroy-bold";
+    font-size: 4rem;
+    color: rgb(var(--text-primary));
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-family: "gilroy-regular";
+    font-size: 2rem;
+    color: rgb(var(--white));
+    margin-bottom: 5rem;
+  }
+}

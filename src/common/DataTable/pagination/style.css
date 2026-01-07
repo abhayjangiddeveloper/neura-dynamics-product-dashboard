@@ -1,0 +1,127 @@
+.pagination {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .pageLimitBox {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    .text {
+      font-size: 1.5rem;
+      line-height: 125%;
+      font-weight: 400;
+    }
+
+    .pageDropdown {
+      gap: 1rem;
+      padding: 0rem;
+      padding-right: 1.5rem;
+
+      > p {
+        padding: inherit;
+        padding: 1rem;
+        padding-left: 1.5rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .barAndCount {
+    .bar {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+
+      .leftIconContainer,
+      .rightIconContainer {
+        background: none;
+        outline: none;
+        border: none;
+        min-height: 3.6rem;
+        min-width: 3.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-color: rgba(var(--black), 0.1);
+        border-radius: 0.5rem;
+
+        &:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+
+          &:hover {
+            background-color: unset;
+          }
+        }
+
+        &:hover {
+          background-color: rgba(var(--black));
+
+          .icon {
+            filter: var(--white-color-filter);
+          }
+        }
+
+        .icon {
+          width: 2rem;
+          filter: var(--black-color-filter);
+        }
+      }
+
+      .pageNumbers {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .pageNumber {
+          background: none;
+          border: none;
+          outline: none;
+          list-style: none;
+          padding: 0 1.3rem;
+          font-size: 1.75rem;
+          cursor: pointer;
+          background-color: rgba(var(--black), 0.1);
+          text-align: center;
+          min-width: 3.6rem;
+          height: 3.6rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 500;
+          color: rgb(var(--black));
+          border-radius: 0.5rem;
+
+          &:hover {
+            color: rgb(var(--white));
+            background-color: rgba(var(--black));
+          }
+
+          &.pageNumberActive {
+            background-color: rgb(var(--black));
+            color: rgb(var(--white));
+          }
+        }
+
+        .disablePageNumber {
+          pointer-events: none;
+          background-color: transparent;
+          border: none;
+        }
+      }
+    }
+
+    .summary {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+  }
+}

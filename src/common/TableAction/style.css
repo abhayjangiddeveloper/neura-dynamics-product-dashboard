@@ -1,0 +1,108 @@
+.tableActionMainContainer {
+  .TableAction {
+    position: relative;
+    display: block;
+
+    .tableActionIconMenuIcon {
+      background: none;
+      outline: none;
+      border: none;
+      min-height: 3.6rem;
+      min-width: 3.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      cursor: pointer;
+
+      .tableActionMainIcon {
+        width: 1.6rem;
+        height: 1.6rem;
+        filter: var(--icon-filter);
+      }
+    }
+  }
+}
+
+.tableActionMenu {
+  background-color: rgb(var(--sidebar-bg));
+  z-index: 99999;
+  min-width: 25.5rem;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 0.15rem solid rgb(var(--border-regular), 0.15);
+
+  .tableActionMenuHeading {
+    font-size: 1.5rem;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .tableActionItem {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(var(--sidebar-tab-active-bg));
+    }
+
+    .tableActionItemIconContainer {
+      background: none;
+      outline: none;
+      border: none;
+      height: 1.65rem;
+      width: 1.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      cursor: pointer;
+
+      .tableActionItemIcon {
+        width: 100%;
+        filter: var(--icon-filter);
+      }
+    }
+
+    .tableActonItemText {
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      font-weight: 400;
+      color: rgb(var(--text-primary));
+      text-transform: capitalize;
+      font-family: "gilroy-medium";
+    }
+  }
+
+  .deleteHover {
+    > .tableActonItemText {
+      color: rgba(var(--error));
+    }
+
+    > .tableActionItemIconContainer .tableActionItemIcon {
+      filter: var(--error-filter);
+    }
+
+    &:hover {
+      background-color: rgba(var(--error), 0.05);
+
+      > .tableActionItemIconContainer .tableActionItemIcon {
+        filter: var(--error-filter);
+      }
+
+      > .tableActonItemText {
+        color: rgba(var(--error));
+      }
+    }
+  }
+}

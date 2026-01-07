@@ -1,0 +1,109 @@
+.tab {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+  padding: 1.4rem 2.6rem;
+  padding-right: 1.4rem;
+  -webkit-user-select: none;
+  user-select: none;
+
+  &:hover {
+    background-color: rgb(var(--sidebar-tab-active-bg), 0.5);
+  }
+
+  .labelAndIcon {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.4rem;
+    width: 2.4rem;
+
+    .icon {
+      width: 75%;
+      height: 75%;
+      filter: var(--icon-filter);
+    }
+  }
+
+  .name {
+    font-size: 1.4rem;
+    font-weight: 125%;
+    font-family: "gilroy-medium";
+    text-transform: capitalize;
+    color: rgba(var(--secondary));
+  }
+
+  .arrowIconBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+
+    .nestedArrow {
+      width: 35%;
+      height: 22%;
+      transform: rotate(90deg);
+    }
+
+    .open {
+      transform: rotate(0deg);
+    }
+  }
+
+  .count {
+    background-color: rgba(42, 42, 42, 1);
+    padding: 0rem 0.8rem;
+    height: 1.8rem;
+    border-radius: 100rem;
+    font-size: 1.1rem;
+    line-height: normal;
+    font-family: "gilroy-medium";
+    color: rgba(var(--text-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: calc(2.4rem - 1.2rem);
+  }
+}
+
+/* -------------------------------------------- */
+.tabActive {
+  background-color: rgba(var(--sidebar-tab-active-bg));
+  position: relative;
+
+  &:hover {
+    background-color: rgba(var(--sidebar-tab-active-bg));
+  }
+
+  .name {
+    font-family: "gilroy-bold";
+    color: rgba(var(--text-primary));
+  }
+}
+
+.tabActive::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0.4rem;
+  border-radius: 0rem 1rem 1rem 0rem;
+  background-color: rgba(var(--sidebar-tab-active-tag-bg));
+}
+/* ------------------------------------------------------ */
+
+/* ------------------------------------------------------ */
+.childTab {
+  /* border: 2px solid green; */
+  padding: 1.1rem 1.2rem;
+}

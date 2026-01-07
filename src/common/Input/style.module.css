@@ -1,0 +1,81 @@
+.inputWrapper {
+  /* border: 2px solid green; */
+
+  .label {
+    font-size: 1.5rem;
+    font-family: "gilroy-medium";
+    color: rgb(var(--text-primary));
+    margin-bottom: 0.5rem;
+  }
+
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(var(--input-bg));
+    padding-inline: 1.6rem;
+    border-radius: 0.8rem;
+    border-width: 0.1rem;
+    border-style: solid;
+    transition: 0.3s;
+
+    &:focus-within {
+      border-color: rgb(var(--border-regular));
+      transition: 0.3s;
+    }
+
+    &:hover {
+      border-color: rgb(var(--border-regular));
+      transition: 0.3s;
+    }
+
+    .coreInput {
+      font-size: 1.3rem;
+      line-height: 100%;
+      background-color: transparent;
+      width: 100%;
+      padding-block: 1.3rem;
+      border: none;
+      outline: none;
+      color: rgb(var(--text-primary));
+      font-family: "gilroy-semibold";
+
+      &::placeholder {
+        color: rgb(var(--secondary));
+        font-family: "gilroy-semibold";
+      }
+    }
+
+    .iconBox {
+      width: 1.8rem;
+      height: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .searchIcon {
+        width: 80%;
+        height: 80%;
+      }
+    }
+  }
+
+  .inputError {
+    border-color: rgb(var(--error));
+    transition: 0.3s;
+
+    &:hover {
+      border-color: rgb(var(--error));
+      transition: 0.3s;
+    }
+  }
+
+  .error {
+    font-size: 1.25rem;
+    font-family: "gilroy-medium";
+    color: rgb(var(--error));
+    margin-top: 0.5rem;
+  }
+}

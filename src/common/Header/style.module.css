@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.backButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgb(var(--text-primary));
+  font-size: 1.4rem;
+  font-family: "gilroy-medium";
+  padding: 0.4rem 0.6rem;
+  white-space: nowrap;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+.title {
+  color: rgb(var(--text-primary));
+  text-transform: uppercase;
+  font-family: "gilroy-bold";
+  font-size: 3.2rem;
+  letter-spacing: 0.5rem;
+
+  @media (max-width: 550px) {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,44 @@
+.searchInputContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 54rem;
+  overflow: hidden;
+  background-color: rgb(var(--input-bg));
+  padding-inline: 1.6rem;
+  border-radius: 0.8rem;
+
+  @media (max-width: 650px) {
+    min-width: 100%;
+  }
+
+  .searchInput {
+    font-size: 1.3rem;
+    line-height: 100%;
+    background-color: transparent;
+    width: 100%;
+    padding-block: 1.3rem;
+    border: none;
+    outline: none;
+    color: rgb(var(--text-primary));
+    font-family: "gilroy-semibold";
+
+    &::placeholder {
+      color: rgb(var(--secondary));
+      font-family: "gilroy-semibold";
+    }
+  }
+
+  .iconBox {
+    width: 1.8rem;
+    height: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .searchIcon {
+      width: 80%;
+      height: 80%;
+    }
+  }
+}

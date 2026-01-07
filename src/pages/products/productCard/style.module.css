@@ -1,0 +1,134 @@
+.productCard {
+  --card-radius: 1.5rem;
+
+  width: 100%;
+  background: rgb(var(--sidebar-tab-active-bg));
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.imageWrapper {
+  position: relative;
+  height: 20rem;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  min-height: 15rem;
+  object-fit: contain;
+  background-color: rgb(var(--sidebar-bg));
+}
+
+.ratingAndFavorite {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ratingBox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(var(--primary), 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--white), 0.15);
+}
+
+.rating {
+  font-size: 1.6rem;
+  font-family: "gilroy-semibold";
+  color: rgb(var(--text-primary));
+}
+
+.starIcon {
+  width: 1.6rem;
+  height: 1.6rem;
+  filter: brightness(0) saturate(100%) invert(75%) sepia(40%) saturate(3552%)
+    hue-rotate(4deg) brightness(99%) contrast(105%);
+}
+
+.favoriteIconBox {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0.75rem;
+  background: rgba(var(--primary), 0.08);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(var(--white), 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.favoriteIconBox:hover {
+  transform: scale(1.05);
+  background: rgba(var(--primary), 0.15);
+}
+
+.heart {
+  width: 60%;
+  height: 60%;
+}
+
+.content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.priceAndLike {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 2.25rem;
+  font-family: "gilroy-bold";
+  color: rgb(var(--text-primary));
+}
+
+.title {
+  font-size: 1.9rem;
+  font-family: "gilroy-bold";
+  color: rgb(var(--text-primary), 0.85);
+  line-height: 120%;
+}
+
+.description {
+  font-size: 1.45rem;
+  line-height: 130%;
+  color: rgba(var(--text-primary), 0.75);
+}
+
+.textOverFlow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.textOverFlowTitle {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}

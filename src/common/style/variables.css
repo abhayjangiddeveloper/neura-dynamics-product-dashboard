@@ -1,0 +1,6 @@
+:root {
+  --data-table-cell-font-size: 1.5rem;
+  --data-table-cell-padding-row: 1.5rem 1.5rem;
+  --data-table-cell-padding-head: var(--data-table-cell-padding-row);
+  --sidebar-width: 25.5rem;
+}
