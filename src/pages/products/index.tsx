@@ -1,30 +1,32 @@
 import { Dropdown } from "@/common/Dropdown";
 import Header from "@/common/Header";
 import { Searchbar } from "@/common/Searchbar";
-import { useProductStore } from "@/stores/productStore";
+import { fetchProducts, reset } from "@/redux/productSlice";
+import type { AppDispatch, RootState } from "@/redux/store";
 import { PRODUCT_CATEGORIES, SORT_OPTIONS } from "@/utils/constant";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./productCard";
 import classes from "./style.module.css";
-import TableColumn from "./tableColumn";
+import ProductCardSkeleton from "./productCard/skeletonLoading";
 
 const Products = () => {
-  // Store
-  const { products, loading, fetchProducts, reset } = useProductStore();
-  const navigate = useNavigate();
+  // Hooks
+  const dispatch = useDispatch<AppDispatch>();
 
-  // Local States
-  const [enableAddProductModal, setEnableAddProductModal] = useState(false);
+  // Global State
+  const { products, loading } = useSelector(
+    (state: RootState) => state.products
+  );
+
+  // States
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sortOrder, setSortOrder] = useState<string | null>(null);
 
   // Variables
-  const showData = TableColumn.map((el) => el.id);
   const debouncedQuery = useDebounce(searchText?.trim(), 500);
-
   const filteredProducts = useMemo(() => {
     const filtered = products.filter((product) => {
       const matchesSearch =
@@ -46,27 +48,26 @@ const Products = () => {
     });
   }, [products, debouncedQuery, selectedCategory, sortOrder]);
 
-  const handleOpenAddProductModal = () => {
-    setEnableAddProductModal((prev) => !prev);
-  };
-
+  // Functions
   const handleFetchData = useCallback(() => {
-    fetchProducts();
-  }, [fetchProducts]);
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   // Effects
   useEffect(() => {
     handleFetchData();
-    return () => reset();
-  }, [handleFetchData, reset]);
+    return () => {
+      dispatch(reset());
+    };
+  }, [handleFetchData, dispatch]);
 
   return (
     <div className={classes.products}>
       <Header
         title="Products"
-        showButton
-        buttonTitle="Add product"
-        onButtonClick={handleOpenAddProductModal}
+        // showButton
+        // buttonTitle="Add product"
+        // onButtonClick={handleOpenAddProductModal}
       />
 
       <div className={classes.tableAndFilter}>
@@ -86,6 +87,7 @@ const Products = () => {
             valueKey="key"
             displayKey="displayName"
           />
+
           <Dropdown
             placeholder="Sort by price"
             setSelectedValue={(value) => setSortOrder(value || null)}
@@ -96,36 +98,28 @@ const Products = () => {
           />
         </div>
 
-        {/* <DataTable
-          headCells={TableColumn}
-          rows={filteredProducts as []}
-          onClickRow={handleRowClick}
-          loading={loading}
-          render={(row: ProductType | TableRow): ReactNode =>
-            showData.map((el, index) => (
-              <RenderCellsUi
+        {loading ? (
+          <div className={classes.renderProducts}>
+            {Array.from({ length: 6 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))}
+          </div>
+        ) : (
+          <div className={classes.renderProducts}>
+            {filteredProducts.map((product, index) => (
+              <ProductCard
                 key={`product-${index}`}
-                row={row as ProductType}
-                el={el as TableColumnId}
+                image={product.image}
+                title={product.title}
+                description={product.description}
+                rating={product.rating}
+                id={product.id}
+                price={product.price}
+                favorite={false}
               />
-            ))
-          }
-        /> */}
-
-        <div className={classes.renderProducts}>
-          {filteredProducts.map((product, index) => (
-            <ProductCard
-              key={`product-${index}`}
-              image={product.image}
-              title={product.title}
-              description={product.description}
-              rating={product.rating}
-              id={product.id}
-              price={product.price}
-              favorite={false}
-            />
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,28 +1,33 @@
 import Header from "@/common/Header";
 import { InfoCard } from "@/common/InfoCard";
 import { InfoWrapper } from "@/common/InfoWrapper";
-import { useProductStore } from "@/stores/productStore";
+import { fetchProductDetail } from "@/redux/productSlice";
+import type { AppDispatch, RootState } from "@/redux/store";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import classes from "./style.module.css";
-import ProductDetailSkeleton from "./ProductDetailSkeleton";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import ProductDetailSkeleton from "./ProductDetailSkeleton";
+import classes from "./style.module.css";
 
 const ProductDetail = () => {
   // Hooks
-  const { productDetail, productDetailLoading, fetchProductDetail } =
-    useProductStore();
-  const params = useParams();
+  const dispatch = useDispatch<AppDispatch>();
+  const { id } = useParams<{ id: string }>();
 
-  // Variables
-  const { id } = params;
+  // Global State
+  const { productDetail, productDetailLoading } = useSelector(
+    (state: RootState) => state.products
+  );
 
   // Effects
   useEffect(() => {
-    if (id) fetchProductDetail(id);
-  }, [id, fetchProductDetail]);
+    if (id) {
+      dispatch(fetchProductDetail(id));
+    }
+  }, [id, dispatch]);
 
-  if (productDetailLoading)
+  if (productDetailLoading) {
     return (
       <SkeletonTheme
         baseColor="var(--skeleton-base)"
@@ -31,10 +36,11 @@ const ProductDetail = () => {
         <ProductDetailSkeleton />
       </SkeletonTheme>
     );
+  }
 
   return (
     <div className={classes.productDetail}>
-      <Header title={"Product Detail"} showBackButton />
+      <Header title="Product Detail" showBackButton />
 
       <section className={classes.productInfo}>
         <div className={classes.mainSection}>
@@ -51,10 +57,10 @@ const ProductDetail = () => {
             <p className={classes.description}>{productDetail?.description}</p>
 
             <InfoWrapper>
-              <InfoCard title={"Category"} value={productDetail?.category} />
-              <InfoCard title={"Price"} value={String(productDetail?.price)} />
+              <InfoCard title="Category" value={productDetail?.category} />
+              <InfoCard title="Price" value={String(productDetail?.price)} />
               <InfoCard
-                title={"Rating"}
+                title="Rating"
                 value={`${productDetail?.rating.rate}`}
               />
             </InfoWrapper>

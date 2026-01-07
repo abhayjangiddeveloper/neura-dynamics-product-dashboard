@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import { buildPath } from "@/utils/functions";
 import { CURRENCY_SYMBOL, PATHS } from "@/utils/constant";
-import { ProductType } from "@/stores/productStore";
+import { ProductType } from "@/redux/productSlice";
 
 const ProductCard = ({
   image,
