@@ -26,6 +26,8 @@ const ProductDetail = () => {
     event.stopPropagation();
 
     dispatch(toggleFavorite(Number(id)));
+
+    console.log(id);
   };
 
   // Effects

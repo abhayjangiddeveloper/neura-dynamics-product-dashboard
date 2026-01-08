@@ -13,6 +13,10 @@
   cursor: pointer;
 }
 
+.productCard:hover {
+  transform: scale(1.01);
+}
+
 .imageWrapper {
   position: relative;
   height: 20rem;

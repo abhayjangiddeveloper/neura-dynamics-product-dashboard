@@ -6,6 +6,8 @@ export const PATHS = {
 };
 
 export const CURRENCY_SYMBOL = "$";
+export const APP_NAME = "Neura Dynamics";
+export const FAVORITE_KEY = "favorite_product_ids";
 
 export const PRODUCT_CATEGORIES = [
   {

@@ -1,6 +1,17 @@
 import { apiCaller, ApiDataType } from "@/apiServices/apiCaller";
 import { API_END_POINTS } from "@/apiServices/apiEndPoints";
+import { FAVORITE_KEY } from "@/utils/constant";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "./store";
+
+const getStoredFavoriteIds = (): number[] => {
+  if (typeof window === "undefined") return [];
+  try {
+    return JSON.parse(localStorage.getItem(FAVORITE_KEY) || "[]");
+  } catch {
+    return [];
+  }
+};
 
 export interface Rating {
   rate: number;
@@ -38,43 +49,37 @@ export const fetchProducts = createAsyncThunk<
   ProductType[],
   void,
   { rejectValue: string }
->(
-  "products/fetchProducts",
-  async (_, { rejectWithValue, fulfillWithValue }) => {
+>("products/fetchProducts", async (_, { rejectWithValue }) => {
+  try {
     const apiData: ApiDataType = {
       url: API_END_POINTS.PRODUCTS,
       method: "GET",
     };
 
-    try {
-      const response = await apiCaller(apiData);
-      return fulfillWithValue(response);
-    } catch (err: any) {
-      if (err) throw rejectWithValue(err);
-    }
+    const response = await apiCaller(apiData);
+    return response;
+  } catch (err: any) {
+    return rejectWithValue(err);
   }
-);
+});
 
 export const fetchProductDetail = createAsyncThunk<
   ProductType,
   string,
   { rejectValue: string }
->(
-  "products/fetchProductDetail",
-  async (id, { rejectWithValue, fulfillWithValue }) => {
+>("products/fetchProductDetail", async (id, { rejectWithValue }) => {
+  try {
     const apiData: ApiDataType = {
       url: `${API_END_POINTS.PRODUCTS}/${id}`,
       method: "GET",
     };
 
-    try {
-      const response = await apiCaller(apiData);
-      return fulfillWithValue(response);
-    } catch (err: any) {
-      if (err) throw rejectWithValue(err);
-    }
+    const response = await apiCaller(apiData);
+    return response;
+  } catch (err: any) {
+    return rejectWithValue(err);
   }
-);
+});
 
 const productSlice = createSlice({
   name: "products",
@@ -133,9 +138,12 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
+
+        const favoriteIds = getStoredFavoriteIds(); // ✅ NEW
+
         state.products = action.payload.map((product) => ({
           ...product,
-          favorite: false,
+          favorite: favoriteIds.includes(product.id), // ✅ RESTORE LIKES
         }));
       })
       .addCase(fetchProducts.rejected, (state, action) => {
@@ -149,8 +157,15 @@ const productSlice = createSlice({
       })
       .addCase(fetchProductDetail.fulfilled, (state, action) => {
         state.productDetailLoading = false;
-        state.productDetail = action.payload;
+
+        const favoriteIds = getStoredFavoriteIds();
+
+        state.productDetail = {
+          ...action.payload,
+          favorite: favoriteIds.includes(action.payload.id),
+        };
       })
+
       .addCase(fetchProductDetail.rejected, (state, action) => {
         state.productDetailLoading = false;
         state.error = action.payload || "Something went wrong";
@@ -158,13 +173,16 @@ const productSlice = createSlice({
   },
 });
 
+export const selectFavoriteProducts = (state: RootState) =>
+  state.products.products.filter((p) => p.favorite);
+
 export const {
   addProductLocal,
   deleteProductLocal,
   updateProductLocal,
-  reset,
   toggleFavorite,
   clearFavorites,
+  reset,
 } = productSlice.actions;
 
 export default productSlice.reducer;

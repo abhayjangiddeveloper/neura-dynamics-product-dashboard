@@ -1,4 +1,4 @@
-import { Icons } from "@/utils/iconPath";
+import { Images } from "@/utils/imagePath";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { SideBar } from "./sideBar";
@@ -41,7 +41,7 @@ const Layout = () => {
       {isMobile && (
         <header className={classes.topBar}>
           <div className={classes.topBarLogoBox}>
-            <img src={Icons.LOGO} alt="logo" className={classes.topBarLogo} />
+            <img src={Images.LOGO} alt="logo" className={classes.topBarLogo} />
           </div>
 
           <button

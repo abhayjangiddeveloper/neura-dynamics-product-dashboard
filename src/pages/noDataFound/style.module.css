@@ -1,0 +1,31 @@
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  height: 60dvh;
+  gap: 2rem;
+}
+
+.icon {
+  width: 5rem;
+}
+
+.iconImg {
+  width: 100%;
+  filter: var(--white-filter);
+}
+
+.title {
+  font-size: 2rem;
+  font-family: "gilroy-bold";
+  color: rgb(var(--text-primary));
+}
+
+.description {
+  font-size: 1.5rem;
+  color: rgb(var(--text-primary));
+}

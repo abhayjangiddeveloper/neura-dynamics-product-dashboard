@@ -12,8 +12,6 @@ const ProductCardSkeleton = () => {
             <div className={classes.starSkeleton} />
             <div className={classes.ratingTextSkeleton} />
           </div>
-
-          <div className={classes.favoriteIconBox} />
         </div>
       </div>
 

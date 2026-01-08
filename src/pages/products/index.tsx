@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./productCard";
 import classes from "./style.module.css";
 import ProductCardSkeleton from "./productCard/skeletonLoading";
+import NotFoundData from "../noDataFound";
 
 const Products = () => {
   // Hooks
@@ -63,12 +64,7 @@ const Products = () => {
 
   return (
     <div className={classes.products}>
-      <Header
-        title="Products"
-        // showButton
-        // buttonTitle="Add product"
-        // onButtonClick={handleOpenAddProductModal}
-      />
+      <Header title="Products" />
 
       <div className={classes.tableAndFilter}>
         <div className={classes.filterSection}>
@@ -105,20 +101,26 @@ const Products = () => {
             ))}
           </div>
         ) : (
-          <div className={classes.renderProducts}>
-            {filteredProducts.map((product, index) => (
-              <ProductCard
-                key={`product-${index}`}
-                image={product.image}
-                title={product.title}
-                description={product.description}
-                rating={product.rating}
-                id={product.id}
-                price={product.price}
-                favorite={product.favorite}
-              />
-            ))}
-          </div>
+          <>
+            {filteredProducts.length === 0 ? (
+              <NotFoundData />
+            ) : (
+              <div className={classes.renderProducts}>
+                {filteredProducts.map((product, index) => (
+                  <ProductCard
+                    key={`product-${index}`}
+                    image={product.image}
+                    title={product.title}
+                    description={product.description}
+                    rating={product.rating}
+                    id={product.id}
+                    price={product.price}
+                    favorite={product.favorite}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

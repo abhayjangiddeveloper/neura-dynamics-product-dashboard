@@ -7,6 +7,7 @@ import {
 import "./index.css";
 import Layout from "./layout/index.tsx";
 import Dashboard from "./pages/dashboard/index.tsx";
+import Favorites from "./pages/favorites/index.tsx";
 import ProductDetail from "./pages/products/detail/index.tsx";
 import Products from "./pages/products/index.tsx";
 import { PATHS } from "./utils/constant.ts";
@@ -40,7 +41,7 @@ const Router = () => {
         },
         {
           path: PATHS.FAVORITES,
-          element: <Products />,
+          element: <Favorites />,
         },
       ],
     },

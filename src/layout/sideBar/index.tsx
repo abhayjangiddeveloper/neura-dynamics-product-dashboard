@@ -1,8 +1,8 @@
-import { PATHS } from "@/utils/constant";
+import { APP_NAME, PATHS } from "@/utils/constant";
+import { Images } from "@/utils/imagePath";
 import clsx from "clsx";
 import { useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Icons } from "../../utils/iconPath";
 import classes from "./style.module.css";
 import { Tab } from "./tab";
 import { SIDEBAR_TABS } from "./tabsLinks";
@@ -38,14 +38,11 @@ export const SideBar = ({
       <div className={classes.logoSection}>
         <div className={classes.logoContainer}>
           <Link to={PATHS.ROOT}>
-            <img
-              className={classes.logo}
-              src={Icons.LOGO_WITHOUT_TEXT}
-              alt="logo"
-            />
+            <img className={classes.logo} src={Images.LOGO} alt="logo" />
           </Link>
         </div>
-        <h2 className={classes.logoName}>Firm</h2>
+
+        <h2 className={classes.logoName}>{APP_NAME}</h2>
       </div>
 
       <ul className={classes.tabsContainer} ref={tabGroupRef}>
