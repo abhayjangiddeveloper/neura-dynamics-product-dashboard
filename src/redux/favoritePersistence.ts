@@ -1,37 +1,32 @@
 import { FAVORITE_KEY } from "@/utils/constant";
 import { Middleware } from "@reduxjs/toolkit";
-import {
-  clearFavorites,
-  fetchProducts,
-  ProductType,
-  toggleFavorite,
-} from "./productSlice";
+import { clearFavorites, toggleFavorite } from "./productSlice";
+
+const getStoredFavoriteIds = (): number[] => {
+  try {
+    return JSON.parse(localStorage.getItem(FAVORITE_KEY) || "[]");
+  } catch {
+    return [];
+  }
+};
 
 export const favoritePersistenceMiddleware: Middleware =
-  (store) => (next) => (action) => {
+  () => (next) => (action) => {
     const result = next(action);
 
-    if (toggleFavorite.match(action) || clearFavorites.match(action)) {
-      const state = store.getState();
-      const favoriteIds = state.products.products
-        .filter((p: ProductType) => p.favorite)
-        .map((p: ProductType) => p.id);
+    if (toggleFavorite.match(action)) {
+      const productId = action.payload;
+      const stored = getStoredFavoriteIds();
 
-      localStorage.setItem(FAVORITE_KEY, JSON.stringify(favoriteIds));
+      const updated = stored.includes(productId)
+        ? stored.filter((id) => id !== productId)
+        : [...stored, productId];
+
+      localStorage.setItem(FAVORITE_KEY, JSON.stringify(updated));
     }
 
-    if (fetchProducts.fulfilled.match(action)) {
-      const stored = localStorage.getItem(FAVORITE_KEY);
-      if (!stored) return result;
-
-      const favoriteIds: number[] = JSON.parse(stored);
-      const state = store.getState();
-
-      state.products.products.forEach((product: ProductType) => {
-        if (favoriteIds.includes(product.id)) {
-          product.favorite = true;
-        }
-      });
+    if (clearFavorites.match(action)) {
+      localStorage.removeItem(FAVORITE_KEY);
     }
 
     return result;
