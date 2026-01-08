@@ -1,19 +1,18 @@
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import { defineConfig } from "vite";
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
   },
-  plugins: [react()],
-  server: {
-    port: 3000,
-  },
-  build: {
-    manifest: true,
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/test/setup.ts",
+    css: true,
   },
 });

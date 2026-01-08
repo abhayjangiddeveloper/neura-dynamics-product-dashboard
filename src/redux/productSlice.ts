@@ -85,24 +85,6 @@ const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    addProductLocal: (state, action: PayloadAction<ProductType>) => {
-      state.products.push(action.payload);
-    },
-
-    deleteProductLocal: (state, action: PayloadAction<number>) => {
-      state.products = state.products.filter((p) => p.id !== action.payload);
-    },
-
-    updateProductLocal: (
-      state,
-      action: PayloadAction<{ id: number; updated: Partial<ProductType> }>
-    ) => {
-      const { id, updated } = action.payload;
-      state.products = state.products.map((p) =>
-        p.id === id ? { ...p, ...updated } : p
-      );
-    },
-
     toggleFavorite: (state, action: PayloadAction<number>) => {
       const productId = action.payload;
 
@@ -176,13 +158,6 @@ const productSlice = createSlice({
 export const selectFavoriteProducts = (state: RootState) =>
   state.products.products.filter((p) => p.favorite);
 
-export const {
-  addProductLocal,
-  deleteProductLocal,
-  updateProductLocal,
-  toggleFavorite,
-  clearFavorites,
-  reset,
-} = productSlice.actions;
+export const { toggleFavorite, clearFavorites, reset } = productSlice.actions;
 
 export default productSlice.reducer;

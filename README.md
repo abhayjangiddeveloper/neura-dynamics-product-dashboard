@@ -1,154 +1,115 @@
-<!-- Product Management - Vite + React + TS UI -->
-
 # Product Management
 
-A small dashboard-style UI built with **Vite + React + TypeScript**.
+This is a modern, responsive web application built with React and TypeScript for efficient product management and display. It serves as a comprehensive platform to showcase products, manage user favorites, and provide a seamless browsing experience. The application leverages a robust state management system and a component-based architecture for scalability and maintainability.
 
-**Live (Vercel):** https://value-at-void-assignment.vercel.app
+## Features
 
-This repo is currently **frontend-only**: screens use **static/mock data** and client-side filtering.
+*   **Product Listing:** Browse through a comprehensive list of products.
+*   **Product Detail View:** View detailed information for each product.
+*   **Favorites Management:** Add and remove products from your personal favorites list.
+*   **Search Functionality:** Easily find products using the integrated search bar.
+*   **Responsive Design:** Optimized for various screen sizes, providing a consistent user experience across devices.
+*   **Robust State Management:** Utilizes Redux Toolkit and Zustand for predictable state handling.
+*   **API Integration:** Seamless communication with backend services for data retrieval and manipulation.
 
-## Quick start
+## Tech Stack
+
+This project is built using the following key technologies and libraries:
+
+*   **Frontend:**
+    *   [React](https://react.dev/): A JavaScript library for building user interfaces.
+    *   [TypeScript](https://www.typescriptlang.org/): A superset of JavaScript that adds static types.
+    *   [Vite](https://vitejs.dev/): A fast frontend build tool that provides an excellent developer experience.
+    *   [Redux Toolkit](https://redux-toolkit.js.org/): The official, opinionated, batteries-included toolset for efficient Redux development.
+    *   [Zustand](https://zustand-demo.pmnd.rs/): A small, fast, and scalable bearbones state-management solution using simplified flux principles.
+    *   [React Router DOM](https://reactrouter.com/en/main): Declarative routing for React.
+    *   [Axios](https://axios-http.com/): Promise-based HTTP client for the browser and Node.js.
+    *   [React Loading Skeleton](https://www.react-loading-skeleton.com/): A library for creating beautiful loading skeletons.
+*   **Testing:**
+    *   [Vitest](https://vitest.dev/): A blazing fast unit test framework powered by Vite.
+    *   [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/): Utilities for testing React components.
+    *   [jsdom](https://github.com/jsdom/jsdom): A JavaScript implementation of the WHATWG DOM and HTML standards, for use with Node.js.
+*   **Linting:**
+    *   [ESLint](https://eslint.org/): Pluggable JavaScript linter.
+
+## Project Structure
+
+The project follows a component-based architecture with a clear separation of concerns:
+
+```
+.
+├───public/                      # Static assets
+├───src/
+│   ├───apiServices/             # API call configurations and endpoints
+│   ├───assets/                  # Images, icons, fonts
+│   ├───common/                  # Reusable UI components (Buttons, Inputs, Modals, etc.)
+│   ├───layout/                  # Application layout components (Header, Sidebar)
+│   ├───pages/                   # Top-level views/routes (Dashboard, Products, Favorites, etc.)
+│   ├───redux/                   # Redux store, slices, and middleware for global state management
+│   ├───utils/                   # Utility functions, constants, and helpers
+│   ├───App.tsx                  # Main application component
+│   ├───main.tsx                 # Entry point of the React application
+│   ├───router.tsx               # Application routing configuration
+│   └───...
+└───...
+```
+
+## Getting Started
+
+Follow these instructions to set up and run the project locally.
 
 ### Prerequisites
 
-- Node.js (recommended: **18+**)
-- npm (or a compatible package manager)
+Make sure you have the following installed on your machine:
 
-### Install & run
+*   [Node.js](https://nodejs.org/en/) (LTS version recommended)
+*   [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd product-management
+    ```
+    *(Replace `<repository-url>` with the actual URL of your repository.)*
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+### Running the Application
+
+To start the development server:
 
 ```bash
-npm install
 npm run dev
+# or
+npm start
+# or
+yarn dev
+# or
+yarn start
 ```
 
-Vite is configured to run on **http://localhost:3000**.
+The application will typically be available at `http://localhost:5173` (or another port if 5173 is in use).
 
-### Useful scripts
+## Available Scripts
 
-```bash
-npm run dev      # start dev server (also available as: npm start)
-npm run build    # typecheck (tsc) + production build
-npm run preview  # preview the production build locally
-npm run lint     # eslint
-```
+In the project directory, you can run the following scripts:
 
-## Tech stack
+*   `npm run dev` or `npm start`: Starts the development server.
+*   `npm run build`: Builds the application for production to the `dist` folder.
+*   `npm run lint`: Lints the project files for potential errors and style inconsistencies.
+*   `npm run preview`: Serves the production build locally for previewing.
+*   `npm run test`: Runs all tests in interactive watch mode.
+*   `npm run test:ui`: Runs tests with a Vitest UI.
+*   `npm run test:run`: Runs all tests once and exits.
+*   `npm run test:coverage`: Runs tests and generates a code coverage report.
 
-- **React 19** (`react`, `react-dom`)
-- **TypeScript**
-- **Vite** (dev server + build)
-- **React Router** (`react-router-dom`) for client-side routing
-- **Zustand** for lightweight state management (filters)
-- **clsx** for conditional className composition
-- **@uidotdev/usehooks** (installed; usage depends on the screen/components)
+## License
 
-### Routing
-
-Routing is defined in `src/router.tsx` using `createBrowserRouter`.
-
-Top-level routes:
-
-- `/` → Dashboard
-- `/notification` → Notification
-- `/jobs` → Jobs
-- `/candidates` → Candidates (nested)
-  - `/candidates/registered`
-  - `/candidates/short-listed`
-
-There is a route-level error boundary and a catch-all `*` route that renders the Error page.
-
-### Path alias
-
-The project uses an alias so imports like `@/pages/jobs` resolve to `src/pages/jobs`.
-
-- Vite alias: `vite.config.ts`
-- TS paths: `tsconfig.json`
-
-## Styling choices
-
-This project uses a mix of:
-
-1. **CSS Modules** for component-scoped styles (e.g. `style.module.css` next to components).
-2. **Global CSS** imported once via `src/index.css`, which pulls in:
-   - `src/common/style/reset.css` (baseline reset)
-   - `src/common/style/colors.css` (CSS variables like `--primary`, `--sidebar-bg`, etc.)
-   - `src/common/style/fonts.css` (Gilroy font faces from `/public/fonts`)
-   - `src/common/style/style.css` (global defaults; sets `html{font-size:62.5%}` and base background)
-
-Notes:
-
-- The project uses `rem` heavily. With `html { font-size: 62.5% }`, `1rem ≈ 10px`.
-- Icons/images are imported as modules and centralized in:
-  - `src/utils/iconPath.ts`
-  - `src/utils/imagePath.ts`
-
-## Data assumptions (current behavior)
-
-There is **no backend/API integration** in this repo right now.
-
-- Job stats cards and job list data are **static**:
-  - `STATIC_STATS_DATA` in `src/utils/constant.ts`
-  - `JOB_CARDS_DATA` in `src/utils/constant.ts`
-- Filter dropdown options are also **static**:
-  - `JOB_PROFILE_OPTIONS`, `EXPERIENCE_OPTIONS`, `EMPLOYMENT_TYPE_OPTIONS`
-
-Filtering is performed client-side on the `Jobs` page:
-
-- Search matches `job_title` case-insensitively.
-- Other filters match the corresponding fields (job profile, experience value, employment type).
-- “Closed” toggles a boolean filter against `job.is_closed`.
-
-If you later connect an API, the easiest drop-in replacement is to swap `JOB_CARDS_DATA` with data fetched in `src/pages/jobs/index.tsx`, and keep the Zustand store as the UI filter state.
-
-## Component structure overview
-
-High-level composition:
-
-- `src/main.tsx`
-  - imports global styles (`src/index.css`)
-  - mounts `<App />`
-- `src/App.tsx`
-  - renders `<Router />`
-- `src/router.tsx`
-  - creates browser router
-  - wraps app routes with `<Layout />`
-- `src/layout/index.tsx`
-  - responsive shell (mobile top bar + sidebar)
-  - `<SideBar />` + `<Outlet />` for routed pages
-
-Reusable UI building blocks in `src/common/`:
-
-- `Button/` — variant/size-aware button
-- `IconButton/` — icon-only button
-- `Searchbar/` — input with leading search icon
-- `Dropdown/` — custom dropdown that renders menu via `Portal/`
-- `Portal/` — positions floating UI relative to an anchor element (used by Dropdown)
-- `Header/` — page header/title
-
-Pages (`src/pages/`):
-
-- `dashboard/` — placeholder screen
-- `notification/` — notification screen
-- `jobs/`
-  - `index.tsx` — renders header + stats cards + filters + job cards
-  - `filters/` — filter controls wired to Zustand store
-  - `jobCard/` — job card UI (chips + status chips)
-  - `statsCard/` — summary/stat card UI
-- `candidates/` — candidates section with nested routes
-  - `registered/`, `shortListed/`
-- `error/` — lazy-loaded error page
-
-State management:
-
-- `src/stores/jobFilterStore.ts` — Zustand store holding filter state and actions (`reset_filters`, `is_filter_applied`, etc.)
-
-## Deployment notes
-
-This project is configured as a single-page application.
-
-- Live deployment (Vercel): https://value-at-void-assignment.vercel.app
-
-- `vercel.json` rewrites all routes to `/` so React Router routes work on refresh.
-
-# intricaretech-task-1-product-management
+This project is open source and available under the [MIT License](https://opensource.org/licenses/MIT).

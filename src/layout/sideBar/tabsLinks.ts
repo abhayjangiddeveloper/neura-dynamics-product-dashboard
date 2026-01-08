@@ -1,5 +1,5 @@
-import { PATHS } from "../../utils/constant";
-import { Icons } from "../../utils/iconPath";
+import { PATHS } from "@/utils/constant";
+import { Icons } from "@/utils/iconPath";
 
 export const SIDEBAR_TABS = [
   {
