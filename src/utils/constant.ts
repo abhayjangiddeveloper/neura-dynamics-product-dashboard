@@ -2,6 +2,7 @@ export const PATHS = {
   ROOT: "/",
   PRODUCTS: "/products",
   PRODUCT_DETAIL: "/products/:id",
+  FAVORITES: "/favorites",
 };
 
 export const CURRENCY_SYMBOL = "$";

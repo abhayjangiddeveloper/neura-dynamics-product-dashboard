@@ -38,6 +38,10 @@ const Router = () => {
           path: PATHS.PRODUCT_DETAIL,
           element: <ProductDetail />,
         },
+        {
+          path: PATHS.FAVORITES,
+          element: <Products />,
+        },
       ],
     },
     {

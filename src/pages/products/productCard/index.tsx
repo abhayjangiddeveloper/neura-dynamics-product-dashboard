@@ -1,10 +1,12 @@
-import { Icons } from "@/utils/iconPath";
-import classes from "./style.module.css";
-import clsx from "clsx";
-import { useNavigate } from "react-router-dom";
-import { buildPath } from "@/utils/functions";
+import { ProductType, toggleFavorite } from "@/redux/productSlice";
+import { useAppDispatch } from "@/redux/store";
 import { CURRENCY_SYMBOL, PATHS } from "@/utils/constant";
-import { ProductType } from "@/redux/productSlice";
+import { buildPath } from "@/utils/functions";
+import { Icons } from "@/utils/iconPath";
+import clsx from "clsx";
+import { MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import classes from "./style.module.css";
 
 const ProductCard = ({
   image,
@@ -13,9 +15,11 @@ const ProductCard = ({
   rating,
   id,
   price,
+  favorite,
 }: ProductType) => {
   // Hooks
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   // Functions
   const navigateDetailPage = () => {
@@ -29,6 +33,12 @@ const ProductCard = ({
     );
   };
 
+  const handleFavorite = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+
+    dispatch(toggleFavorite(id));
+  };
+
   return (
     <div className={classes.productCard} onClick={navigateDetailPage}>
       <div className={classes.imageWrapper}>
@@ -39,14 +49,6 @@ const ProductCard = ({
             <img src={Icons.STAR} alt="star" className={classes.starIcon} />
             <span className={classes.rating}>{rating.rate}</span>
           </div>
-
-          {/* <button className={classes.favoriteIconBox}>
-            <img
-              src={Icons.HEART_OUTLINE}
-              alt="heart"
-              className={classes.heart}
-            />
-          </button> */}
         </div>
       </div>
 
@@ -57,10 +59,10 @@ const ProductCard = ({
             {price}
           </h2>
 
-          <button className={classes.favoriteIconBox}>
+          <button className={classes.favoriteIconBox} onClick={handleFavorite}>
             <img
-              src={Icons.HEART_OUTLINE}
-              alt="heart"
+              src={favorite ? Icons.HEART_FILLED : Icons.HEART_OUTLINE}
+              alt={favorite ? "filled heart" : "outline heart"}
               className={classes.heart}
             />
           </button>

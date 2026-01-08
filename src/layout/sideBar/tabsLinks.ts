@@ -8,4 +8,10 @@ export const SIDEBAR_TABS = [
     link: PATHS.PRODUCTS,
     icon: Icons.PRODUCTS,
   },
+  {
+    key: "favorites",
+    label: "Favorites",
+    link: PATHS.FAVORITES,
+    icon: Icons.HEART_FILLED,
+  },
 ];

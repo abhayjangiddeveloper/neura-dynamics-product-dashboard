@@ -23,6 +23,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 2rem;
+  position: relative;
 
   @media (max-width: 650px) {
     min-width: 100%;
@@ -64,4 +65,31 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.favoriteIconBox {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  background: rgba(var(--primary), 0.08);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(var(--white), 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.favoriteIconBox:hover {
+  transform: scale(1.05);
+  background: rgba(var(--primary), 0.15);
+}
+
+.heart {
+  width: 60%;
+  height: 60%;
 }

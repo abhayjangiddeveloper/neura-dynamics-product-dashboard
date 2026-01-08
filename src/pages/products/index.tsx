@@ -115,7 +115,7 @@ const Products = () => {
                 rating={product.rating}
                 id={product.id}
                 price={product.price}
-                favorite={false}
+                favorite={product.favorite}
               />
             ))}
           </div>

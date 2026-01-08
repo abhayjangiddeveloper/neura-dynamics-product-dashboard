@@ -98,6 +98,29 @@ const productSlice = createSlice({
       );
     },
 
+    toggleFavorite: (state, action: PayloadAction<number>) => {
+      const productId = action.payload;
+
+      state.products = state.products.map((p) =>
+        p.id === productId ? { ...p, favorite: !p.favorite } : p
+      );
+
+      if (state.productDetail?.id === productId) {
+        state.productDetail.favorite = !state.productDetail.favorite;
+      }
+    },
+
+    clearFavorites: (state) => {
+      state.products = state.products.map((p) => ({
+        ...p,
+        favorite: false,
+      }));
+
+      if (state.productDetail) {
+        state.productDetail.favorite = false;
+      }
+    },
+
     reset: () => initialState,
   },
 
@@ -110,7 +133,10 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.products = action.payload;
+        state.products = action.payload.map((product) => ({
+          ...product,
+          favorite: false,
+        }));
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
@@ -137,6 +163,8 @@ export const {
   deleteProductLocal,
   updateProductLocal,
   reset,
+  toggleFavorite,
+  clearFavorites,
 } = productSlice.actions;
 
 export default productSlice.reducer;
